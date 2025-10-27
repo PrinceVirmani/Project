@@ -1,8 +1,11 @@
 import React from 'react'
+import Loginform from './loginform';
 
 const login = () => {
   return (
-    <div>Login</div>
+    <div>
+      <Loginform />
+    </div>
   )
 }
 
