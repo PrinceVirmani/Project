@@ -1,25 +1,28 @@
 import React from 'react'
 
-const Profile = ({data}) => {
+const Profile = ({data, setData}) => {
   const {name, age, email} = data;
 
-  const handleDataChange = () =>{
-    
+  const handleDataChange = (e, item) =>{
+    setData(prevState => ({
+      ...prevState,
+      [item]: e.target.value,
+    }))
   }
   return (
     <div>
         <label>
         Name :
         </label>
-        <input type="text" name="name" value={name}/>
+        <input type="text" name="name" value={name} onChange={(e) => handleDataChange(e, "name")}/>
          <label>
         Age :
         </label>
-        <input type="text" name="age" value={age}/>
+        <input type="number" name="age" value={age} onChange={(e) => handleDataChange(e, "age")}/>
          <label>
         Email :
         </label>
-        <input type="text" name="email" value={email}/>
+        <input type="text" name="email" value={email} onChange={(e) => handleDataChange(e, "email")}/>
     </div> 
   )
 }

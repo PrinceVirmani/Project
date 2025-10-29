@@ -9,10 +9,11 @@ const Tabform = () => {
     name: "Prince",
     age: 23,
     email: "prince@gmail.com",
-    interest: ["React", "Node", "MongoDB"],
-    theme: "Dark"
+    interest: ["react", "music", "node"],
+    theme: "dark"
   })
   const [activeTab, setActiveTab] = useState(0);
+  const [error, setError] = useState({});
   const tabs=[
     {
       name: "Profile",
@@ -30,6 +31,26 @@ const Tabform = () => {
 
   const ActiveTabComponent = tabs[activeTab].component;
 
+  const handleNextClick = (e) => {
+    e.preventDefault();
+    if(activeTab < tabs.length-1){
+      setActiveTab(activeTab + 1);
+    }
+  }
+
+  const handlePrevClick = (e) => {
+    e.preventDefault();
+    if(activeTab >0){
+      setActiveTab(activeTab -1);
+    }
+  }
+
+  const handleSubmitClick = (e) =>{
+    e.preventDefault();
+    // make api call
+    console.log(data);
+  }
+
   return (
     <div>
       <div className='flex'>
@@ -39,6 +60,11 @@ const Tabform = () => {
       </div>
       <div className='flex border-1 black h-[200px] p-5'>
         <ActiveTabComponent data={data} setData={setData} />
+      </div>
+      <div>
+      { activeTab > 0 && <button onClick={handlePrevClick}>Prev</button>}
+      { activeTab <tabs.length-1 && <button onClick={handleNextClick}>Next</button>}
+      { activeTab === tabs.length-1 && <button onClick={handleSubmitClick}>Submit</button>}
       </div>
     </div>
   )
