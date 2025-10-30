@@ -49,6 +49,7 @@ const Tabform = () => {
     e.preventDefault();
     // make api call
     console.log(data);
+    alert("Form submitted successfully");
   }
 
   return (
