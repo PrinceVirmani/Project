@@ -37,7 +37,14 @@ class MyEventEmitter{
         this.__event_listeners[event].splice(index, 1);
         return true;
     }
-    once(event, listener){}
+    once(event, listener){
+        const wrapperFunction = (...args)=>{
+            listener(...args);
+            this.off(event, wrapperFunction)
+        }
+        this.on(event, wrapperFunction);
+        return true;
+    }
 
 }
 
@@ -48,12 +55,13 @@ const sendWhatsAppMsg = (username)=>{console.log("Whatsapp to", username);}
 e.on("user:signup", (username) => {console.log("user's name is ", username);})
 e.on("user:signup", (username) => {console.log("Sending email to ", username);})
 // e.on("user:signup", (username) => {console.log("sending whatsapp msg to ", username);})
-e.on("user:signup", sendWhatsAppMsg);
+e.once("user:signup", sendWhatsAppMsg);
+// e.on("user:signup", sendWhatsAppMsg);
 e.on("user:logout", (username) => {console.log("user logout", username);})
 
 e.emit("user:signup", "@prince");
 e.emit("user:signup", "@princeagain");
-e.off("user:signup", sendWhatsAppMsg);
+// e.off("user:signup", sendWhatsAppMsg);
 e.emit("user:signup", "@princefirse");
 e.emit("user:logout", "@prince");
 
