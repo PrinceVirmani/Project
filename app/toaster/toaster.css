@@ -1,0 +1,114 @@
+/* Container positions */
+.notification-container {
+  position: fixed;
+  z-index: 9999;
+  padding: 8px;
+  pointer-events: none; /* let clicks through except on the toast itself */
+}
+
+.notification-container.top-right { top: 16px; right: 16px; }
+.notification-container.top-left { top: 16px; left: 16px; }
+.notification-container.bottom-right { bottom: 16px; right: 16px; }
+.notification-container.bottom-left { bottom: 16px; left: 16px; }
+
+/* Toast */
+.notification {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #fff;
+  min-width: 220px;
+  max-width: min(92vw, 420px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  animation: toast-in 180ms ease-out;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+}
+
+.icon { flex: 0 0 auto; }
+
+.message { flex: 1 1 auto; line-height: 1.3; }
+
+/* Variants */
+.success { background-color: #16a34a; }
+.info    { background-color: #3b82f6; }
+.warning { background-color: #f59e0b; }
+.error   { background-color: #dc2626; }
+
+/* Close button */
+.close {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 6px;
+}
+.close:focus-visible { outline: 2px solid rgba(255,255,255,0.7); outline-offset: 2px; }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Container positions */
+.notification-container {
+  position: fixed;
+  z-index: 9999;
+  padding: 8px;
+  pointer-events: none; /* let clicks through except on the toast itself */
+}
+
+.notification-container.top-right { top: 16px; right: 16px; }
+.notification-container.top-left { top: 16px; left: 16px; }
+.notification-container.bottom-right { bottom: 16px; right: 16px; }
+.notification-container.bottom-left { bottom: 16px; left: 16px; }
+
+/* Toast */
+.notification {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #fff;
+  min-width: 220px;
+  max-width: min(92vw, 420px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  animation: toast-in 180ms ease-out;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+}
+
+.icon { flex: 0 0 auto; }
+
+.message { flex: 1 1 auto; line-height: 1.3; }
+
+/* Variants */
+.success { background-color: #16a34a; }
+.info    { background-color: #3b82f6; }
+.warning { background-color: #f59e0b; }
+.error   { background-color: #dc2626; }
+
+/* Close button */
+.close {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 6px;
+}
+.close:focus-visible { outline: 2px solid rgba(255,255,255,0.7); outline-offset: 2px; }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
