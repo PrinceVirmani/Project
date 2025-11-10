@@ -1,10 +1,10 @@
 "use client"
 import { EmailTemplate } from '@/components/email-template';
 import { resend } from '@/lib/resend';
-import { NextRequest, NextResponse } from 'next/server';
+// import { NextRequest, NextResponse } from 'next/server';
 import React from 'react'
 
-function Email(res: NextResponse, req: NextRequest) {
+function Email() {
   const handleEmailClick = async () =>{
     try {
       const res = await fetch('api/send', {
