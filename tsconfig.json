@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "jsquestions/debounce.js"  ],
+, "jsquestions/debounce.js", "app/acordion/page.jsx"  ],
   "exclude": ["node_modules"]
 }
