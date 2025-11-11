@@ -22,9 +22,20 @@ const page = () => {
 
   const [input, setInput] = useState("");
   const [results, setResults] = useState<Recipe[]>([]);
-  const [showResults, setShowResults] = useState(false)
+  const [showResults, setShowResults] = useState(false);
+
+  // caching - localstorage and simple way as well 
+  // how to cache the result -  object -- {man: [], mango:[]}
+
+  const [cache, setCache]= useState({})
+
  
   const fetchData = async(q:string) =>{
+
+    if(cache[input]){
+      setResults(cache[input])
+    }
+
      if (q.trim().length < 2) {
     setResults([]);
     return;
@@ -34,6 +45,7 @@ const page = () => {
     );
     const json: RecipeSearchResponse = await res.json();
     setResults(json.recipes ?? []);
+        setCache(prev => ({...prev, [input]:[json.recipes ]}))
   };
 
 
