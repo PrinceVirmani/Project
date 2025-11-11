@@ -30,21 +30,22 @@ const page = () => {
   const [cache, setCache]= useState<{ [key: string]: any }>({});
 
  
-  const fetchData = async(q:string) =>{
+  const fetchData = async() =>{
 
     if(cache[input]){
       setResults(cache[input]);
       return;
     }
 
-     if (q.trim().length < 2) {
-    setResults([]);
-    return;
-  }
+  //    if (q.trim().length < 2) {
+  //   setResults([]);
+  //   return;
+  // }
     const res = await fetch(
-      `https://dummyjson.com/recipes/search?q=${encodeURIComponent(q)}`
+      `https://dummyjson.com/recipes/search?q=` + input
     );
     const json: RecipeSearchResponse = await res.json();
+    console.log(json?.recipes)
     setResults(json.recipes ?? []);
         setCache(prev => ({...prev, [input]:[json.recipes ]}))
   };
