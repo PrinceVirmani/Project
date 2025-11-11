@@ -27,13 +27,14 @@ const page = () => {
   // caching - localstorage and simple way as well 
   // how to cache the result -  object -- {man: [], mango:[]}
 
-  const [cache, setCache]= useState({})
+  const [cache, setCache]= useState<{ [key: string]: any }>({});
 
  
   const fetchData = async(q:string) =>{
 
     if(cache[input]){
-      setResults(cache[input])
+      setResults(cache[input]);
+      return;
     }
 
      if (q.trim().length < 2) {
